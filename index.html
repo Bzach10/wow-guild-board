@@ -6,7 +6,7 @@
 <title>Skill Issues — Weekly Board</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rye:wght@400&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
   /* ================= Responsive web board =================
      The auto-scaling twin of the Discord image: real HTML, 4 columns on
@@ -19,7 +19,7 @@
     --text:#f2f3f7; --muted:#b3b9c5;
     --faint:#7f8591;
     --red:#e5484d; --green:#4cdc56;
-    --font-display:'Cinzel',serif;
+    --font-display:'Rye',serif;
     --font-body:'Inter','Segoe UI',sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -84,12 +84,23 @@
   .bar2 .cap{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
     font-size:12px; color:var(--text); text-shadow:0 1px 2px rgba(0,0,0,.6);}
   .cols{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(390px, 100%), 1fr)); gap:16px;}
-  .col{padding:16px 18px; min-width:0;}
-  .col-h{display:flex; align-items:center; gap:10px; padding-bottom:10px; margin-bottom:12px;
-    border-bottom:1px solid var(--hairline);}
-  .col-h .tick{width:4px; height:20px; border-radius:2px; flex:none;
-    background:linear-gradient(180deg, var(--accent), #a97f28);}
-  .col-h .t{font-size:18px; font-weight:800; letter-spacing:.03em;}
+  .col{position:relative; padding:26px 18px 16px; min-width:0;
+    background:
+      radial-gradient(130% 80% at 50% 0%, rgba(255,222,160,.06), transparent 62%),
+      linear-gradient(172deg, #2b2114 0%, #241b10 55%, #1c140b 100%) !important;
+    border:2px solid #7c6136 !important; border-radius:3px 10px 4px 12px !important;}
+  .col::before{content:""; position:absolute; top:8px; left:50%; margin-left:-5px;
+    width:10px; height:10px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #cdb789, #3d3123 70%);
+    box-shadow:0 2px 4px rgba(0,0,0,.7);}
+  .col-h{display:block; text-align:center; padding-bottom:10px; margin-bottom:12px;
+    border-bottom:3px double #7c6136;}
+  .col-h .eyebrow{display:block; font-family:var(--font-display); font-size:11px;
+    letter-spacing:.45em; text-indent:.45em; color:#c8a55f;}
+  .col-h .t{display:block; font-family:var(--font-display); font-size:19px; font-weight:400;
+    color:#ecd9b0; letter-spacing:.04em; margin-top:4px;}
+  .col-h .bounty{display:block; font-size:9px; letter-spacing:.28em; text-indent:.28em;
+    color:#94794c; margin-top:5px; font-weight:700;}
   .sec{margin-bottom:16px;}
   .sec:last-child{margin-bottom:0;}
   .sec-h{display:flex; align-items:center; gap:10px; height:30px;}
@@ -185,7 +196,9 @@
     </div>
     <div class="cols">
       <div class="card col" id="col-1" style="scroll-margin-top:64px;">
-        <div class="col-h"><div class="tick"></div><div class="t">RAID</div></div>
+        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
+          <span class="t">RAID</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        </div>
         <div class="sec">
           <div class="sec-h"><span class="t">TOP DPS PARSES · MYTHIC</span><span class="rule"></span></div>
           <div class="row" data-name="maillo"
@@ -195,7 +208,7 @@
                target="_blank" rel="noopener" title="Open Maillo on Warcraft Logs"
                style="color:rgb(171,212,115);">Maillo</a>
             <span class="detail">BeastMastery · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">93% <small>· 144K</small></span>
+            <span class="value" style="color:rgb(163,53,238);">92% <small>· 144K</small></span>
           </div>
           <div class="row alt" data-name="rakdisc"
                data-tags="shadow mythic chimaerus top dps parses · mythic">
@@ -225,12 +238,12 @@
             <span class="value" style="color:rgb(163,53,238);">79% <small>· 138K</small></span>
           </div>
           <div class="row" data-name="tommybravoo"
-               data-tags="unholy mythic imperator averzian top dps parses · mythic">
+               data-tags="unholy mythic imperator averzian 2w streak top dps parses · mythic">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
                style="color:rgb(196,30,58);">Tommybravoo</a>
-            <span class="detail">Unholy · Mythic Imperator Averzian</span>
+            <span class="detail">Unholy · Mythic Imperator Averzian · 2w streak</span>
             <span class="value" style="color:rgb(56,144,255);">67% <small>· 127K</small></span>
           </div>
         </div>
@@ -246,12 +259,12 @@
             <span class="value" style="color:rgb(255,128,0);">96% <small>· 167K</small></span>
           </div>
           <div class="row alt" data-name="healmates"
-               data-tags="holy mythic imperator averzian top healing parses · mythic">
+               data-tags="holy mythic imperator averzian 3w streak top healing parses · mythic">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healmates"
                target="_blank" rel="noopener" title="Open Healmates on Warcraft Logs"
                style="color:rgb(255,255,255);">Healmates</a>
-            <span class="detail">Holy · Mythic Imperator Averzian</span>
+            <span class="detail">Holy · Mythic Imperator Averzian · 3w streak</span>
             <span class="value" style="color:rgb(163,53,238);">75% <small>· 130K</small></span>
           </div>
           <div class="row" data-name="rakdisc"
@@ -282,7 +295,7 @@
                target="_blank" rel="noopener" title="Open Maillo on Warcraft Logs"
                style="color:rgb(171,212,115);">Maillo</a>
             <span class="detail">DPS · BeastMastery · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">93% <small>· 144K</small></span>
+            <span class="value" style="color:rgb(163,53,238);">92% <small>· 144K</small></span>
           </div>
           <div class="row" data-name="rakdisc"
                data-tags="dps shadow mythic chimaerus top parses · all roles">
@@ -314,7 +327,9 @@
         </div>
       </div>
       <div class="card col" id="col-2" style="scroll-margin-top:64px;">
-        <div class="col-h"><div class="tick"></div><div class="t">MYTHIC PLUS</div></div>
+        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
+          <span class="t">MYTHIC PLUS</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        </div>
         <div class="sec">
           <div class="sec-h"><span class="t">TOP TIMED KEYS THIS WEEK</span><span class="rule"></span></div>
           <div class="row" data-name="amrevenge"
@@ -327,12 +342,12 @@
             <span class="value" style="color:rgb(230,180,70);">+20</span>
           </div>
           <div class="row alt" data-name="tommybravoo"
-               data-tags="unholy dk skyreach top timed keys this week">
+               data-tags="unholy dk skyreach 2w streak top timed keys this week">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
                style="color:rgb(196,30,58);">Tommybravoo</a>
-            <span class="detail">Unholy DK · Skyreach</span>
+            <span class="detail">Unholy DK · Skyreach · 2w streak</span>
             <span class="value" style="color:rgb(230,180,70);">+19</span>
           </div>
           <div class="row" data-name="brewzleeh"
@@ -473,7 +488,9 @@
         </div>
       </div>
       <div class="card col" id="col-3" style="scroll-margin-top:64px;">
-        <div class="col-h"><div class="tick"></div><div class="t">SEASONAL MYTHIC PLUS</div></div>
+        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
+          <span class="t">SEASONAL MYTHIC PLUS</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        </div>
         <div class="sec">
           <div class="sec-h"><span class="t">SEASON M+ SCORES</span><span class="rule"></span></div>
           <div class="row" data-name="amrevenge"
@@ -578,7 +595,9 @@
         </div>
       </div>
       <div class="card col" id="col-4" style="scroll-margin-top:64px;">
-        <div class="col-h"><div class="tick"></div><div class="t">SEASONAL GUILD</div></div>
+        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
+          <span class="t">SEASONAL GUILD</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        </div>
         <div class="sec">
           <div class="sec-h"><span class="t">MOST IMPROVED DPS</span><span class="rule"></span></div>
           <div class="row" data-name="tommybravoo"
@@ -669,6 +688,36 @@
             <span class="value" style="color:rgb(255,128,0);">96%</span>
           </div>
         </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">WEEKLY AWARD · IRON ATTENDANCE</span><span class="rule"></span></div>
+          <div class="row" data-name="buchalter"
+               data-tags="raid weeks in a row weekly award · iron attendance">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_mage.jpg" alt="" loading="lazy">
+            <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/buchalter"
+               target="_blank" rel="noopener" title="Open Buchalter on Warcraft Logs"
+               style="color:rgb(64,199,235);">Buchalter</a>
+            <span class="detail">raid weeks in a row</span>
+            <span class="value" style="color:rgb(76,220,86);">6 <small>· wks</small></span>
+          </div>
+          <div class="row alt" data-name="healmates"
+               data-tags="raid weeks in a row weekly award · iron attendance">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_priest.jpg" alt="" loading="lazy">
+            <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healmates"
+               target="_blank" rel="noopener" title="Open Healmates on Warcraft Logs"
+               style="color:rgb(255,255,255);">Healmates</a>
+            <span class="detail">raid weeks in a row</span>
+            <span class="value" style="color:rgb(76,220,86);">3 <small>· wks</small></span>
+          </div>
+          <div class="row" data-name="boondocka"
+               data-tags="raid weeks in a row weekly award · iron attendance">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg" alt="" loading="lazy">
+            <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/boondocka"
+               target="_blank" rel="noopener" title="Open Boondocka on Warcraft Logs"
+               style="color:rgb(171,212,115);">Boondocka</a>
+            <span class="detail">raid weeks in a row</span>
+            <span class="value" style="color:rgb(76,220,86);">2 <small>· wks</small></span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card roast" id="roast" style="scroll-margin-top:64px;">
@@ -690,13 +739,15 @@
     var rows = Array.prototype.slice.call(document.querySelectorAll('.row[data-name]'));
     var secs = Array.prototype.slice.call(document.querySelectorAll('.sec'));
 
-    /* --- role classification from spec/section keywords --- */
-    var HEAL = ['holy', 'discipline', 'restoration', 'resto', 'mistweaver', 'preservation', 'healing', 'hps', 'healer'];
-    var TANK = ['protection', 'brewmaster', 'blood', 'vengeance', 'guardian', 'tank'];
+    /* --- role classification from spec/section keywords ---
+       WHOLE-WORD tokens only: substring matching classified every
+       Unholy DK as a healer, because "unholy" contains "holy". */
+    var HEAL = ['holy', 'discipline', 'restoration', 'resto', 'mistweaver', 'preservation', 'healing', 'hps', 'healer', 'healers'];
+    var TANK = ['protection', 'brewmaster', 'blood', 'vengeance', 'guardian', 'tank', 'tanks'];
     function roleOf(row) {
-      var tags = row.getAttribute('data-tags') || '';
+      var tokens = (row.getAttribute('data-tags') || '').split(/[^a-z0-9+]+/);
       var hit = function (words) {
-        return words.some(function (w) { return tags.indexOf(w) !== -1; });
+        return words.some(function (w) { return tokens.indexOf(w) !== -1; });
       };
       if (hit(TANK)) return 'tank';
       if (hit(HEAL)) return 'healer';
