@@ -6,7 +6,7 @@
 <title>Skill Issues — Weekly Board</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rye:wght@400&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
   /* ================= Responsive web board =================
      The auto-scaling twin of the Discord image: real HTML, 4 columns on
@@ -14,12 +14,12 @@
      filters, per-player profile links, and a week archive — all of it
      fail-quiet, so with JS off you simply get the clean static page. */
   :root{
-    --bg:#111217; --panel:#1e212b;
-    --hairline:#353b48; --accent:#e6b446;
-    --text:#f2f3f7; --muted:#b3b9c5;
-    --faint:#7f8591;
-    --red:#e5484d; --green:#4cdc56;
-    --font-display:'Rye',serif;
+    --bg:#130d1a; --panel:#20152c;
+    --hairline:#3c2e4a; --accent:#c9974a;
+    --text:#f3ece0; --muted:#b9abc9;
+    --faint:#7c6d8c;
+    --red:#e5484d; --green:#57e08a;
+    --font-display:'Cinzel Decorative',serif;
     --font-body:'Inter','Segoe UI',sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -86,9 +86,25 @@
   .cols{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(390px, 100%), 1fr)); gap:16px;}
   .col{position:relative; padding:26px 18px 16px; min-width:0;
     background:
-      radial-gradient(130% 80% at 50% 0%, rgba(255,222,160,.06), transparent 62%),
-      linear-gradient(172deg, #2b2114 0%, #241b10 55%, #1c140b 100%) !important;
-    border:2px solid #7c6136 !important; border-radius:3px 10px 4px 12px !important;}
+      linear-gradient(rgba(240,228,201,.62), rgba(235,221,190,.68)),
+      url("assets/generated/imperial_ruin_poster.png") center/cover !important;
+    border:2px solid #5c4526 !important;
+    box-shadow: inset 0 0 0 5px rgba(74,54,26,.22), 0 12px 30px rgba(0,0,0,.5) !important;
+    border-radius:3px 10px 4px 12px !important;}
+  /* ink-on-paper: match the image board's Imperial Bounty posters */
+  .col .col-h{border-bottom-color:#5c4526;}
+  .col .col-h .eyebrow{color:#4a3113;}
+  .col .col-h .t{color:#2c2010;}
+  .col .col-h .bounty{color:#6b5433;}
+  .col .sec-h .t{color:#4a3113;}
+  .col .sec-h .rule{background:linear-gradient(90deg, #6d5433, transparent);}
+  .col .row.alt{background:rgba(74,49,19,.10);}
+  .col .row:hover{background:rgba(74,49,19,.16);}
+  .col .row .detail{color:#5f4a2e;}
+  .col .row .value small{color:#5f4a2e;}
+  .col .row .badge.plain{border-color:#6d5433; color:#5f4a2e;}
+  .col .row.textrow{color:#5f4a2e;}
+  .col .empty{color:#7a6244;}
   .col::before{content:""; position:absolute; top:8px; left:50%; margin-left:-5px;
     width:10px; height:10px; border-radius:50%;
     background:radial-gradient(circle at 35% 30%, #cdb789, #3d3123 70%);
@@ -98,7 +114,7 @@
   .col-h .eyebrow{display:block; font-family:var(--font-display); font-size:11px;
     letter-spacing:.45em; text-indent:.45em; color:#c8a55f;}
   .col-h .t{display:block; font-family:var(--font-display); font-size:19px; font-weight:400;
-    color:#ecd9b0; letter-spacing:.04em; margin-top:4px;}
+    color:#ecd9b0; letter-spacing:.04em; word-spacing:.35em; margin-top:4px;}
   .col-h .bounty{display:block; font-size:9px; letter-spacing:.28em; text-indent:.28em;
     color:#94794c; margin-top:5px; font-weight:700;}
   .sec{margin-bottom:16px;}
@@ -188,7 +204,7 @@
         <div class="tile"><div class="lbl">REGION RANK</div>
           <div class="val">#2,219</div></div>
         <div class="tile"><div class="lbl">WORLD RANK</div>
-          <div class="val">#6,854</div></div>
+          <div class="val">#6,855<small style="color:rgb(229,72,77);">▼1</small></div></div>
       </div>
       <div class="bar2"><div class="fill" style="width:11.9%;"></div>
         <div class="cap">8 kills in 67 pulls (12%)</div>
@@ -196,8 +212,8 @@
     </div>
     <div class="cols">
       <div class="card col" id="col-1" style="scroll-margin-top:64px;">
-        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
-          <span class="t">RAID</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        <div class="col-h"><span class="eyebrow">★ IMPERIAL BOUNTY ★</span>
+          <span class="t">RAID</span><span class="bounty">CLAIMED BY THE VOID · REWARD: THE THRONE</span>
         </div>
         <div class="sec">
           <div class="sec-h"><span class="t">TOP DPS PARSES · MYTHIC</span><span class="rule"></span></div>
@@ -206,45 +222,45 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/maillo"
                target="_blank" rel="noopener" title="Open Maillo on Warcraft Logs"
-               style="color:rgb(171,212,115);">Maillo</a>
+               style="color:rgb(88,110,59);">Maillo</a>
             <span class="detail">BeastMastery · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">92% <small>· 144K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">93% <small>· 144K</small></span>
           </div>
           <div class="row alt" data-name="rakdisc"
                data-tags="shadow mythic chimaerus top dps parses · mythic">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowwordpain.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Shadow · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">88% <small>· 146K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">88% <small>· 146K</small></span>
           </div>
           <div class="row" data-name="enyò"
                data-tags="devourer mythic vorasius top dps parses · mythic">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_demonhunter.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/eny%C3%B2"
                target="_blank" rel="noopener" title="Open Enyò on Warcraft Logs"
-               style="color:rgb(163,48,201);">Enyò</a>
+               style="color:rgb(84,24,104);">Enyò</a>
             <span class="detail">Devourer · Mythic Vorasius</span>
-            <span class="value" style="color:rgb(163,53,238);">86% <small>· 125K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">85% <small>· 125K</small></span>
           </div>
           <div class="row alt" data-name="tommybravox"
                data-tags="havoc mythic chimaerus top dps parses · mythic">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_specdps.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravox"
                target="_blank" rel="noopener" title="Open Tommybravox on Warcraft Logs"
-               style="color:rgb(163,48,201);">Tommybravox</a>
+               style="color:rgb(84,24,104);">Tommybravox</a>
             <span class="detail">Havoc · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">79% <small>· 138K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">79% <small>· 138K</small></span>
           </div>
           <div class="row" data-name="tommybravoo"
                data-tags="unholy mythic imperator averzian 2w streak top dps parses · mythic">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">Tommybravoo</a>
+               style="color:rgb(101,15,30);">Tommybravoo</a>
             <span class="detail">Unholy · Mythic Imperator Averzian · 2w streak</span>
-            <span class="value" style="color:rgb(56,144,255);">67% <small>· 127K</small></span>
+            <span class="value" style="color:rgb(29,74,132);">67% <small>· 127K</small></span>
           </div>
         </div>
         <div class="sec">
@@ -254,27 +270,27 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/phyrthepali"
                target="_blank" rel="noopener" title="Open Phyrthepali on Warcraft Logs"
-               style="color:rgb(245,140,186);">Phyrthepali</a>
+               style="color:rgb(127,72,96);">Phyrthepali</a>
             <span class="detail">Holy · Mythic Imperator Averzian</span>
-            <span class="value" style="color:rgb(255,128,0);">96% <small>· 167K</small></span>
+            <span class="value" style="color:rgb(132,66,0);">96% <small>· 167K</small></span>
           </div>
           <div class="row alt" data-name="healmates"
                data-tags="holy mythic imperator averzian 3w streak top healing parses · mythic">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healmates"
                target="_blank" rel="noopener" title="Open Healmates on Warcraft Logs"
-               style="color:rgb(255,255,255);">Healmates</a>
+               style="color:rgb(52,44,34);">Healmates</a>
             <span class="detail">Holy · Mythic Imperator Averzian · 3w streak</span>
-            <span class="value" style="color:rgb(163,53,238);">75% <small>· 130K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">75% <small>· 130K</small></span>
           </div>
           <div class="row" data-name="rakdisc"
                data-tags="discipline mythic rotmire top healing parses · mythic">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Discipline · Mythic Rotmire</span>
-            <span class="value" style="color:rgb(56,144,255);">70% <small>· 172K</small></span>
+            <span class="value" style="color:rgb(29,74,132);">70% <small>· 172K</small></span>
           </div>
         </div>
         <div class="sec">
@@ -284,51 +300,51 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/phyrthepali"
                target="_blank" rel="noopener" title="Open Phyrthepali on Warcraft Logs"
-               style="color:rgb(245,140,186);">Phyrthepali</a>
+               style="color:rgb(127,72,96);">Phyrthepali</a>
             <span class="detail">HPS · Holy · Mythic Imperator Averzian</span>
-            <span class="value" style="color:rgb(255,128,0);">96% <small>· 167K</small></span>
+            <span class="value" style="color:rgb(132,66,0);">96% <small>· 167K</small></span>
           </div>
           <div class="row alt" data-name="maillo"
                data-tags="dps beastmastery mythic chimaerus top parses · all roles">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/maillo"
                target="_blank" rel="noopener" title="Open Maillo on Warcraft Logs"
-               style="color:rgb(171,212,115);">Maillo</a>
+               style="color:rgb(88,110,59);">Maillo</a>
             <span class="detail">DPS · BeastMastery · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">92% <small>· 144K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">93% <small>· 144K</small></span>
           </div>
           <div class="row" data-name="rakdisc"
                data-tags="dps shadow mythic chimaerus top parses · all roles">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowwordpain.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">DPS · Shadow · Mythic Chimaerus</span>
-            <span class="value" style="color:rgb(163,53,238);">88% <small>· 146K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">88% <small>· 146K</small></span>
           </div>
           <div class="row alt" data-name="enyò"
                data-tags="dps devourer mythic vorasius top parses · all roles">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_demonhunter.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/eny%C3%B2"
                target="_blank" rel="noopener" title="Open Enyò on Warcraft Logs"
-               style="color:rgb(163,48,201);">Enyò</a>
+               style="color:rgb(84,24,104);">Enyò</a>
             <span class="detail">DPS · Devourer · Mythic Vorasius</span>
-            <span class="value" style="color:rgb(163,53,238);">86% <small>· 125K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">85% <small>· 125K</small></span>
           </div>
           <div class="row" data-name="meowstal"
                data-tags="tank vengeance mythic imperator averzian top parses · all roles">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_spectank.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/meowstal"
                target="_blank" rel="noopener" title="Open Meowstal on Warcraft Logs"
-               style="color:rgb(163,48,201);">Meowstal</a>
+               style="color:rgb(84,24,104);">Meowstal</a>
             <span class="detail">Tank · Vengeance · Mythic Imperator Averzian</span>
-            <span class="value" style="color:rgb(163,53,238);">80% <small>· 65K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">80% <small>· 65K</small></span>
           </div>
         </div>
       </div>
       <div class="card col" id="col-2" style="scroll-margin-top:64px;">
-        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
-          <span class="t">MYTHIC PLUS</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        <div class="col-h"><span class="eyebrow">★ IMPERIAL BOUNTY ★</span>
+          <span class="t">MYTHIC PLUS</span><span class="bounty">CLAIMED BY THE VOID · REWARD: THE THRONE</span>
         </div>
         <div class="sec">
           <div class="sec-h"><span class="t">TOP TIMED KEYS THIS WEEK</span><span class="rule"></span></div>
@@ -337,45 +353,45 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/amrevenge"
                target="_blank" rel="noopener" title="Open Amrevenge on Warcraft Logs"
-               style="color:rgb(171,212,115);">Amrevenge</a>
+               style="color:rgb(88,110,59);">Amrevenge</a>
             <span class="detail">Beast Mastery Hunter · Pit of Saron</span>
-            <span class="value" style="color:rgb(230,180,70);">+20</span>
+            <span class="value" style="color:rgb(119,93,36);">+20</span>
           </div>
           <div class="row alt" data-name="tommybravoo"
                data-tags="unholy dk skyreach 2w streak top timed keys this week">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">Tommybravoo</a>
+               style="color:rgb(101,15,30);">Tommybravoo</a>
             <span class="detail">Unholy DK · Skyreach · 2w streak</span>
-            <span class="value" style="color:rgb(230,180,70);">+19</span>
+            <span class="value" style="color:rgb(119,93,36);">+19</span>
           </div>
           <div class="row" data-name="brewzleeh"
                data-tags="brewmaster monk magisters&#39; terrace top timed keys this week">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/brewzleeh"
                target="_blank" rel="noopener" title="Open Brewzleeh on Warcraft Logs"
-               style="color:rgb(0,255,150);">Brewzleeh</a>
+               style="color:rgb(0,132,78);">Brewzleeh</a>
             <span class="detail">Brewmaster Monk · Magisters&#39; Terrace</span>
-            <span class="value" style="color:rgb(230,180,70);">+18</span>
+            <span class="value" style="color:rgb(119,93,36);">+18</span>
           </div>
           <div class="row alt" data-name="rakdisc"
                data-tags="discipline priest skyreach top timed keys this week">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Discipline Priest · Skyreach</span>
-            <span class="value" style="color:rgb(230,180,70);">+18</span>
+            <span class="value" style="color:rgb(119,93,36);">+18</span>
           </div>
           <div class="row" data-name="enyò"
                data-tags="devourer dh maisara caverns top timed keys this week">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_demonhunter.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/eny%C3%B2"
                target="_blank" rel="noopener" title="Open Enyò on Warcraft Logs"
-               style="color:rgb(163,48,201);">Enyò</a>
+               style="color:rgb(84,24,104);">Enyò</a>
             <span class="detail">Devourer DH · Maisara Caverns</span>
-            <span class="value" style="color:rgb(230,180,70);">+17</span>
+            <span class="value" style="color:rgb(119,93,36);">+17</span>
           </div>
         </div>
         <div class="sec">
@@ -385,45 +401,45 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_windwalker_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/brewzleeh"
                target="_blank" rel="noopener" title="Open Brewzleeh on Warcraft Logs"
-               style="color:rgb(0,255,150);">Brewzleeh</a>
+               style="color:rgb(0,132,78);">Brewzleeh</a>
             <span class="detail">Windwalker · +18 Pit of Saron</span>
-            <span class="value" style="color:rgb(255,128,0);">96% <small>· 146K</small></span>
+            <span class="value" style="color:rgb(132,66,0);">96% <small>· 146K</small></span>
           </div>
           <div class="row alt" data-name="tommybravoo"
                data-tags="unholy +19 skyreach top m+ dps this week">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">Tommybravoo</a>
+               style="color:rgb(101,15,30);">Tommybravoo</a>
             <span class="detail">Unholy · +19 Skyreach</span>
-            <span class="value" style="color:rgb(163,53,238);">89% <small>· 143K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">89% <small>· 143K</small></span>
           </div>
           <div class="row" data-name="boondocka"
                data-tags="beastmastery +16 algeth&#39;ar academy top m+ dps this week">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/boondocka"
                target="_blank" rel="noopener" title="Open Boondocka on Warcraft Logs"
-               style="color:rgb(171,212,115);">Boondocka</a>
+               style="color:rgb(88,110,59);">Boondocka</a>
             <span class="detail">BeastMastery · +16 Algeth&#39;ar Academy</span>
-            <span class="value" style="color:rgb(163,53,238);">89% <small>· 111K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">89% <small>· 111K</small></span>
           </div>
           <div class="row alt" data-name="rakdisc"
                data-tags="shadow +16 algeth&#39;ar academy top m+ dps this week">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowwordpain.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Shadow · +16 Algeth&#39;ar Academy</span>
-            <span class="value" style="color:rgb(163,53,238);">89% <small>· 131K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">89% <small>· 131K</small></span>
           </div>
           <div class="row" data-name="slicerdicer"
                data-tags="havoc +15 skyreach top m+ dps this week">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_specdps.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/slicerdicer"
                target="_blank" rel="noopener" title="Open Slicerdicer on Warcraft Logs"
-               style="color:rgb(163,48,201);">Slicerdicer</a>
+               style="color:rgb(84,24,104);">Slicerdicer</a>
             <span class="detail">Havoc · +15 Skyreach</span>
-            <span class="value" style="color:rgb(163,53,238);">89% <small>· 87K</small></span>
+            <span class="value" style="color:rgb(84,27,123);">89% <small>· 87K</small></span>
           </div>
         </div>
         <div class="sec">
@@ -433,27 +449,27 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Discipline · +19 Magister&#39;s Terrace</span>
-            <span class="value" style="color:rgb(255,128,0);">96% <small>· 100K</small></span>
+            <span class="value" style="color:rgb(132,66,0);">96% <small>· 100K</small></span>
           </div>
           <div class="row alt" data-name="healmates"
                data-tags="holy +16 algeth&#39;ar academy top m+ hps this week">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healmates"
                target="_blank" rel="noopener" title="Open Healmates on Warcraft Logs"
-               style="color:rgb(255,255,255);">Healmates</a>
+               style="color:rgb(52,44,34);">Healmates</a>
             <span class="detail">Holy · +16 Algeth&#39;ar Academy</span>
-            <span class="value" style="color:rgb(255,128,0);">95% <small>· 46K</small></span>
+            <span class="value" style="color:rgb(132,66,0);">95% <small>· 46K</small></span>
           </div>
           <div class="row" data-name="nokori"
                data-tags="restoration +12 maisara caverns top m+ hps this week">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_magicimmunity.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/nokori"
                target="_blank" rel="noopener" title="Open Nokori on Warcraft Logs"
-               style="color:rgb(0,112,222);">Nokori</a>
+               style="color:rgb(0,58,115);">Nokori</a>
             <span class="detail">Restoration · +12 Maisara Caverns</span>
-            <span class="value" style="color:rgb(76,220,86);">39% <small>· 45K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">39% <small>· 45K</small></span>
           </div>
         </div>
         <div class="sec">
@@ -463,33 +479,33 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/brewzleeh"
                target="_blank" rel="noopener" title="Open Brewzleeh on Warcraft Logs"
-               style="color:rgb(0,255,150);">Brewzleeh</a>
+               style="color:rgb(0,132,78);">Brewzleeh</a>
             <span class="detail">Brewmaster · +19 Magister&#39;s Terrace</span>
-            <span class="value" style="color:rgb(255,128,0);">97% <small>· 115K</small></span>
+            <span class="value" style="color:rgb(132,66,0);">97% <small>· 115K</small></span>
           </div>
           <div class="row alt" data-name="ellebasi"
                data-tags="guardian +15 skyreach top m+ tanks this week">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/ellebasi"
                target="_blank" rel="noopener" title="Open Ellebasi on Warcraft Logs"
-               style="color:rgb(255,125,10);">Ellebasi</a>
+               style="color:rgb(132,65,5);">Ellebasi</a>
             <span class="detail">Guardian · +15 Skyreach</span>
-            <span class="value" style="color:rgb(56,144,255);">64% <small>· 62K</small></span>
+            <span class="value" style="color:rgb(29,74,132);">64% <small>· 62K</small></span>
           </div>
           <div class="row" data-name="floofwall"
                data-tags="brewmaster +8 skyreach top m+ tanks this week">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/floofwall"
                target="_blank" rel="noopener" title="Open Floofwall on Warcraft Logs"
-               style="color:rgb(0,255,150);">Floofwall</a>
+               style="color:rgb(0,132,78);">Floofwall</a>
             <span class="detail">Brewmaster · +8 Skyreach</span>
-            <span class="value" style="color:rgb(157,157,157);">7% <small>· 71K</small></span>
+            <span class="value" style="color:rgb(81,81,81);">7% <small>· 71K</small></span>
           </div>
         </div>
       </div>
       <div class="card col" id="col-3" style="scroll-margin-top:64px;">
-        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
-          <span class="t">SEASONAL MYTHIC PLUS</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        <div class="col-h"><span class="eyebrow">★ IMPERIAL BOUNTY ★</span>
+          <span class="t">SEASONAL MYTHIC PLUS</span><span class="bounty">CLAIMED BY THE VOID · REWARD: THE THRONE</span>
         </div>
         <div class="sec">
           <div class="sec-h"><span class="t">SEASON M+ SCORES</span><span class="rule"></span></div>
@@ -498,45 +514,45 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/amrevenge"
                target="_blank" rel="noopener" title="Open Amrevenge on Warcraft Logs"
-               style="color:rgb(171,212,115);">Amrevenge</a>
+               style="color:rgb(88,110,59);">Amrevenge</a>
             <span class="detail">Beast Mastery Hunter</span>
-            <span class="value" style="color:rgb(230,180,70);">3908</span>
+            <span class="value" style="color:rgb(119,93,36);">3908</span>
           </div>
           <div class="row alt" data-name="shadoxii"
                data-tags="mistweaver monk season m+ scores">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_mistweaver_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/shadoxii"
                target="_blank" rel="noopener" title="Open Shadoxii on Warcraft Logs"
-               style="color:rgb(0,255,150);">Shadoxii</a>
+               style="color:rgb(0,132,78);">Shadoxii</a>
             <span class="detail">Mistweaver Monk</span>
-            <span class="value" style="color:rgb(230,180,70);">3692</span>
+            <span class="value" style="color:rgb(119,93,36);">3692</span>
           </div>
           <div class="row" data-name="tommybravoo"
                data-tags="unholy dk season m+ scores">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">Tommybravoo</a>
+               style="color:rgb(101,15,30);">Tommybravoo</a>
             <span class="detail">Unholy DK</span>
-            <span class="value" style="color:rgb(230,180,70);">3686 <small>· ▲19</small></span>
+            <span class="value" style="color:rgb(119,93,36);">3686 <small>· ▲19</small></span>
           </div>
           <div class="row alt" data-name="brewzleeh"
                data-tags="brewmaster monk season m+ scores">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/brewzleeh"
                target="_blank" rel="noopener" title="Open Brewzleeh on Warcraft Logs"
-               style="color:rgb(0,255,150);">Brewzleeh</a>
+               style="color:rgb(0,132,78);">Brewzleeh</a>
             <span class="detail">Brewmaster Monk</span>
-            <span class="value" style="color:rgb(230,180,70);">3686</span>
+            <span class="value" style="color:rgb(119,93,36);">3686</span>
           </div>
           <div class="row" data-name="rakdisc"
                data-tags="discipline priest season m+ scores">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Discipline Priest</span>
-            <span class="value" style="color:rgb(230,180,70);">3529</span>
+            <span class="value" style="color:rgb(119,93,36);">3529</span>
           </div>
         </div>
         <div class="sec">
@@ -546,45 +562,45 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/amrevenge"
                target="_blank" rel="noopener" title="Open Amrevenge on Warcraft Logs"
-               style="color:rgb(171,212,115);">Amrevenge</a>
+               style="color:rgb(88,110,59);">Amrevenge</a>
             <span class="detail">Beast Mastery Hunter · Pit of Saron</span>
-            <span class="value" style="color:rgb(235,236,240);">492</span>
+            <span class="value" style="color:rgb(52,44,34);">492</span>
           </div>
           <div class="row alt" data-name="tommybravoo"
                data-tags="unholy dk · pit of saron best season runs">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">Tommybravoo</a>
+               style="color:rgb(101,15,30);">Tommybravoo</a>
             <span class="detail">Unholy DK · Pit of Saron</span>
-            <span class="value" style="color:rgb(235,236,240);">474</span>
+            <span class="value" style="color:rgb(52,44,34);">474</span>
           </div>
           <div class="row" data-name="shadoxii"
                data-tags="mistweaver monk · pit of saron best season runs">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_mistweaver_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/shadoxii"
                target="_blank" rel="noopener" title="Open Shadoxii on Warcraft Logs"
-               style="color:rgb(0,255,150);">Shadoxii</a>
+               style="color:rgb(0,132,78);">Shadoxii</a>
             <span class="detail">Mistweaver Monk · Pit of Saron</span>
-            <span class="value" style="color:rgb(235,236,240);">473</span>
+            <span class="value" style="color:rgb(52,44,34);">473</span>
           </div>
           <div class="row alt" data-name="brewzleeh"
                data-tags="brewmaster monk · magisters&#39; terrace best season runs">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/brewzleeh"
                target="_blank" rel="noopener" title="Open Brewzleeh on Warcraft Logs"
-               style="color:rgb(0,255,150);">Brewzleeh</a>
+               style="color:rgb(0,132,78);">Brewzleeh</a>
             <span class="detail">Brewmaster Monk · Magisters&#39; Terrace</span>
-            <span class="value" style="color:rgb(235,236,240);">473</span>
+            <span class="value" style="color:rgb(52,44,34);">473</span>
           </div>
           <div class="row" data-name="rakdisc"
                data-tags="discipline priest · skyreach best season runs">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/rakdisc"
                target="_blank" rel="noopener" title="Open Rakdisc on Warcraft Logs"
-               style="color:rgb(255,255,255);">Rakdisc</a>
+               style="color:rgb(52,44,34);">Rakdisc</a>
             <span class="detail">Discipline Priest · Skyreach</span>
-            <span class="value" style="color:rgb(235,236,240);">456</span>
+            <span class="value" style="color:rgb(52,44,34);">456</span>
           </div>
         </div>
         <div class="sec">
@@ -595,8 +611,8 @@
         </div>
       </div>
       <div class="card col" id="col-4" style="scroll-margin-top:64px;">
-        <div class="col-h"><span class="eyebrow">★ WANTED ★</span>
-          <span class="t">SEASONAL GUILD</span><span class="bounty">DEAD OR ALIVE · REWARD: GLORY</span>
+        <div class="col-h"><span class="eyebrow">★ IMPERIAL BOUNTY ★</span>
+          <span class="t">SEASONAL GUILD</span><span class="bounty">CLAIMED BY THE VOID · REWARD: THE THRONE</span>
         </div>
         <div class="sec">
           <div class="sec-h"><span class="t">MOST IMPROVED DPS</span><span class="rule"></span></div>
@@ -605,45 +621,45 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open Tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">Tommybravoo</a>
+               style="color:rgb(101,15,30);">Tommybravoo</a>
             <span class="detail">19% → 67% · Unholy · Mythic</span>
-            <span class="value" style="color:rgb(76,220,86);">+48% <small>· 90K → 127K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">+48% <small>· 90K → 127K</small></span>
           </div>
           <div class="row alt" data-name="buchalter"
                data-tags="8% → 55% frost mythic most improved dps">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_frostbolt02.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/buchalter"
                target="_blank" rel="noopener" title="Open Buchalter on Warcraft Logs"
-               style="color:rgb(64,199,235);">Buchalter</a>
+               style="color:rgb(33,103,122);">Buchalter</a>
             <span class="detail">8% → 55% · Frost · Mythic</span>
-            <span class="value" style="color:rgb(76,220,86);">+47% <small>· 89K → 109K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">+47% <small>· 89K → 109K</small></span>
           </div>
           <div class="row" data-name="healyeah"
                data-tags="7% → 37% augmentation mythic most improved dps">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_evoker_augmentation.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healyeah"
                target="_blank" rel="noopener" title="Open Healyeah on Warcraft Logs"
-               style="color:rgb(51,147,127);">Healyeah</a>
+               style="color:rgb(26,76,66);">Healyeah</a>
             <span class="detail">7% → 37% · Augmentation · Mythic</span>
-            <span class="value" style="color:rgb(76,220,86);">+30% <small>· 72K → 108K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">+30% <small>· 72K → 108K</small></span>
           </div>
           <div class="row alt" data-name="dragoonx"
                data-tags="10% → 38% augmentation heroic most improved dps">
             <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_evoker_augmentation.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/dragoonx"
                target="_blank" rel="noopener" title="Open Dragoonx on Warcraft Logs"
-               style="color:rgb(51,147,127);">Dragoonx</a>
+               style="color:rgb(26,76,66);">Dragoonx</a>
             <span class="detail">10% → 38% · Augmentation · Heroic</span>
-            <span class="value" style="color:rgb(76,220,86);">+28% <small>· 43K → 67K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">+28% <small>· 43K → 67K</small></span>
           </div>
           <div class="row" data-name="boondocka"
                data-tags="24% → 36% beastmastery mythic most improved dps">
             <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/boondocka"
                target="_blank" rel="noopener" title="Open Boondocka on Warcraft Logs"
-               style="color:rgb(171,212,115);">Boondocka</a>
+               style="color:rgb(88,110,59);">Boondocka</a>
             <span class="detail">24% → 36% · BeastMastery · Mythic</span>
-            <span class="value" style="color:rgb(76,220,86);">+12% <small>· 103K → 107K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">+12% <small>· 103K → 107K</small></span>
           </div>
         </div>
         <div class="sec">
@@ -653,9 +669,9 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healmates"
                target="_blank" rel="noopener" title="Open Healmates on Warcraft Logs"
-               style="color:rgb(255,255,255);">Healmates</a>
+               style="color:rgb(52,44,34);">Healmates</a>
             <span class="detail">19% → 75% · Holy · Mythic</span>
-            <span class="value" style="color:rgb(76,220,86);">+56% <small>· 97K → 130K</small></span>
+            <span class="value" style="color:rgb(39,114,44);">+56% <small>· 97K → 130K</small></span>
           </div>
         </div>
         <div class="sec">
@@ -665,27 +681,27 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/amrevenge"
                target="_blank" rel="noopener" title="Open Amrevenge on Warcraft Logs"
-               style="color:rgb(171,212,115);">Amrevenge</a>
+               style="color:rgb(88,110,59);">Amrevenge</a>
             <span class="detail">Highest timed key · Pit of Saron</span>
-            <span class="value" style="color:rgb(230,180,70);">+20</span>
+            <span class="value" style="color:rgb(119,93,36);">+20</span>
           </div>
           <div class="row alt" data-name="amrevenge"
                data-tags="best dps parse · heroic fallen-king salhadaar guild records · season">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/amrevenge"
                target="_blank" rel="noopener" title="Open Amrevenge on Warcraft Logs"
-               style="color:rgb(171,212,115);">Amrevenge</a>
+               style="color:rgb(88,110,59);">Amrevenge</a>
             <span class="detail">Best DPS parse · Heroic Fallen-King Salhadaar</span>
-            <span class="value" style="color:rgb(255,128,0);">97%</span>
+            <span class="value" style="color:rgb(132,66,0);">97%</span>
           </div>
           <div class="row" data-name="phyrthepali"
                data-tags="best hps parse · mythic imperator averzian guild records · season">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/phyrthepali"
                target="_blank" rel="noopener" title="Open Phyrthepali on Warcraft Logs"
-               style="color:rgb(245,140,186);">Phyrthepali</a>
+               style="color:rgb(127,72,96);">Phyrthepali</a>
             <span class="detail">Best HPS parse · Mythic Imperator Averzian</span>
-            <span class="value" style="color:rgb(255,128,0);">96%</span>
+            <span class="value" style="color:rgb(132,66,0);">96%</span>
           </div>
         </div>
         <div class="sec">
@@ -695,9 +711,9 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/tommybravoo"
                target="_blank" rel="noopener" title="Open tommybravoo on Warcraft Logs"
-               style="color:rgb(196,30,58);">tommybravoo</a>
+               style="color:rgb(101,15,30);">tommybravoo</a>
             <span class="detail">Unholy DK · 3668 → 3686</span>
-            <span class="value" style="color:rgb(76,220,86);">+19</span>
+            <span class="value" style="color:rgb(39,114,44);">+19</span>
           </div>
         </div>
         <div class="sec">
@@ -707,27 +723,27 @@
             <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_mage.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/buchalter"
                target="_blank" rel="noopener" title="Open Buchalter on Warcraft Logs"
-               style="color:rgb(64,199,235);">Buchalter</a>
+               style="color:rgb(33,103,122);">Buchalter</a>
             <span class="detail">raid weeks in a row</span>
-            <span class="value" style="color:rgb(76,220,86);">6 <small>· wks</small></span>
+            <span class="value" style="color:rgb(39,114,44);">6 <small>· wks</small></span>
           </div>
           <div class="row alt" data-name="healmates"
                data-tags="raid weeks in a row weekly award · iron attendance">
             <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_priest.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/healmates"
                target="_blank" rel="noopener" title="Open Healmates on Warcraft Logs"
-               style="color:rgb(255,255,255);">Healmates</a>
+               style="color:rgb(52,44,34);">Healmates</a>
             <span class="detail">raid weeks in a row</span>
-            <span class="value" style="color:rgb(76,220,86);">3 <small>· wks</small></span>
+            <span class="value" style="color:rgb(39,114,44);">3 <small>· wks</small></span>
           </div>
           <div class="row" data-name="boondocka"
                data-tags="raid weeks in a row weekly award · iron attendance">
             <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg" alt="" loading="lazy">
             <a class="name" href="https://www.warcraftlogs.com/character/us/bleeding-hollow/boondocka"
                target="_blank" rel="noopener" title="Open Boondocka on Warcraft Logs"
-               style="color:rgb(171,212,115);">Boondocka</a>
+               style="color:rgb(88,110,59);">Boondocka</a>
             <span class="detail">raid weeks in a row</span>
-            <span class="value" style="color:rgb(76,220,86);">2 <small>· wks</small></span>
+            <span class="value" style="color:rgb(39,114,44);">2 <small>· wks</small></span>
           </div>
         </div>
       </div>
@@ -767,8 +783,14 @@
     }
     rows.forEach(function (r) { r.setAttribute('data-role', roleOf(r)); });
 
-    /* --- search + role filter --- */
+    /* --- search + role filter (remembered across visits) --- */
     var activeRole = 'all', query = '';
+    function remember() {
+      try {
+        localStorage.setItem('gb.role', activeRole);
+        localStorage.setItem('gb.query', query);
+      } catch (e) { /* private mode etc. — filters just reset next visit */ }
+    }
     function apply() {
       rows.forEach(function (r) {
         var okRole = activeRole === 'all' || r.getAttribute('data-role') === activeRole;
@@ -790,6 +812,7 @@
           Array.prototype.forEach.call(filters.querySelectorAll('button'), function (x) { x.classList.remove('on'); });
           b.classList.add('on');
           activeRole = b.getAttribute('data-role');
+          remember();
           apply();
         });
       });
@@ -798,9 +821,24 @@
       search.hidden = false;
       search.addEventListener('input', function () {
         query = search.value.trim().toLowerCase();
+        remember();
         apply();
       });
     }
+    /* restore the last visit's view */
+    try {
+      var savedRole = localStorage.getItem('gb.role');
+      var savedQuery = localStorage.getItem('gb.query') || '';
+      if (filters && savedRole && savedRole !== 'all') {
+        var btn = filters.querySelector('button[data-role="' + savedRole + '"]');
+        if (btn) { btn.click(); }
+      }
+      if (search && savedQuery) {
+        search.value = savedQuery;
+        query = savedQuery.toLowerCase();
+        apply();
+      }
+    } catch (e) { /* fail-quiet */ }
 
     /* --- week archive dropdown (manifest written by CI) --- */
     var inArchive = location.pathname.indexOf('/archive/') !== -1;
