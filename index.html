@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Issues — Weekly Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  /* ================= Responsive web board =================
+     The auto-scaling sibling of the Discord image: real HTML,
+     4 columns on a desktop, stacking down to 1 on a phone. */
+  :root{
+    --bg:#111217; --panel:#1e212b;
+    --hairline:#353b48; --accent:#e6b446;
+    --text:#f2f3f7; --muted:#b3b9c5;
+    --faint:#7f8591;
+    --red:#e5484d; --green:#4cdc56;
+    --font-display:'Cinzel',serif;
+    --font-body:'Inter','Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:16px;}
+  .hdr{position:relative; padding:44px 20px 34px; text-align:center; overflow:hidden;
+    background:radial-gradient(ellipse 90% 130% at 50% -30%, rgba(224,122,40,.22), transparent 60%), #0b0c10;
+    border-bottom:1px solid var(--hairline);}
+  .hdr h1{font-family:var(--font-display); font-weight:900; letter-spacing:.1em;
+    font-size:clamp(30px, 7vw, 64px); text-shadow:0 4px 18px #000;}
+  .hdr .sub{margin-top:6px; letter-spacing:.34em; color:var(--accent); font-weight:700;
+    font-size:clamp(11px, 2.6vw, 16px);}
+  .info{display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:space-between;
+    padding:12px 20px; color:var(--muted); font-size:14px; border-bottom:1px solid var(--hairline);}
+  .wrap{max-width:1720px; margin:0 auto; padding:22px 16px 8px;}
+  .hero{background:var(--panel); border:1px solid var(--hairline); border-radius:12px;
+    padding:16px 20px; margin-bottom:20px;}
+  .headline{display:flex; align-items:center; flex-wrap:wrap; gap:10px 14px;
+    padding-bottom:12px; margin-bottom:12px; border-bottom:1px solid var(--hairline);}
+  .headline .tag{font-size:12px; letter-spacing:.16em; font-weight:800; color:var(--accent);
+    background:rgba(230,180,70,.12); border:1px solid rgba(230,180,70,.35);
+    padding:5px 10px; border-radius:6px; flex:none;}
+  .headline .txt{font-family:var(--font-display); font-weight:900; letter-spacing:.02em;
+    font-size:clamp(17px, 3.4vw, 30px); line-height:1.2;}
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px 18px;}
+  .tile .lbl{font-size:12px; color:var(--muted); letter-spacing:.05em;}
+  .tile .val{font-size:clamp(20px, 3.2vw, 28px); font-weight:800; font-variant-numeric:tabular-nums;}
+  .tile .val small{font-size:.55em; font-weight:600; margin-left:6px;}
+  .bar{position:relative; height:16px; margin-top:12px; border-radius:8px; background:#262830; overflow:hidden;}
+  .bar .fill{position:absolute; inset:0 auto 0 0; border-radius:8px; background:var(--accent);}
+  .bar .cap{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:12px; color:var(--text);}
+  .cols{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(390px, 100%), 1fr)); gap:16px;}
+  .col{background:var(--panel); border:1px solid var(--hairline); border-radius:12px;
+    padding:16px 18px; min-width:0;}
+  .col-h{display:flex; align-items:center; gap:10px; padding-bottom:10px; margin-bottom:12px;
+    border-bottom:1px solid var(--hairline);}
+  .col-h .tick{width:4px; height:20px; background:var(--accent); flex:none;}
+  .col-h .t{font-size:18px; font-weight:800; letter-spacing:.03em;}
+  .sec{margin-bottom:14px;}
+  .sec:last-child{margin-bottom:0;}
+  .sec-h{display:flex; align-items:center; gap:10px; height:30px;}
+  .sec-h .t{font-size:13px; font-weight:800; color:var(--accent); letter-spacing:.05em; white-space:nowrap;}
+  .sec-h .rule{flex:1; height:1px; background:var(--hairline);}
+  .row{display:flex; align-items:center; min-height:38px; padding:2px 8px; margin:0 -8px;
+    border-radius:7px; min-width:0;}
+  .row.alt{background:rgba(255,255,255,.032);}
+  .row .badge{width:22px; height:22px; border-radius:50%; flex:none; display:flex;
+    align-items:center; justify-content:center; font-size:12px; font-weight:800;
+    color:#14141a; margin-right:9px;}
+  .row .badge.plain{background:none; border:1px solid var(--faint); color:var(--muted);}
+  .row .icon{width:22px; height:22px; border-radius:4px; flex:none; margin-right:7px;}
+  .row .name{font-size:15px; font-weight:700; white-space:nowrap;}
+  .row .detail{font-size:13px; color:var(--muted); margin-left:9px; flex:1; min-width:0;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .row .value{font-size:15px; font-weight:800; white-space:nowrap; margin-left:12px;
+    font-variant-numeric:tabular-nums;}
+  .row .value small{font-size:12px; font-weight:500; color:#ccd2dd;}
+  .row.textrow{font-size:13px; color:var(--muted);}
+  .empty{font-size:13px; color:var(--faint); padding:6px 0;}
+  .roast{background:var(--panel); border:1px solid var(--hairline); border-radius:12px;
+    padding:16px 20px; margin-top:16px;}
+  .roast .t{font-size:13px; font-weight:800; color:var(--accent); margin-bottom:6px; letter-spacing:.05em;}
+  .roast .q{font-size:clamp(15px, 3vw, 19px); line-height:1.4;}
+  .roast .attr{font-size:13px; color:var(--muted); text-align:right; margin-top:4px;}
+  .motd{display:flex; align-items:center; gap:12px; margin:16px auto 0; max-width:1720px;
+    padding:12px 16px; color:var(--accent);}
+  .motd .chip{font-weight:800; letter-spacing:.14em; font-size:12px; background:#1a1c23;
+    border:1px solid var(--hairline); border-radius:6px; padding:5px 10px; flex:none;}
+  .motd .q{font-size:14px; min-width:0;}
+  .credits{display:flex; flex-wrap:wrap; gap:4px 16px; justify-content:space-between;
+    padding:12px 20px 26px; color:var(--faint); font-size:12px;}
+  @media (max-width:480px){
+    .row .detail{display:none;}   /* phones: name + number is the story */
+  }
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <h1>SKILL ISSUES</h1>
+    <div class="sub">BLEEDING HOLLOW · US</div>
+  </div>
+  <div class="info"><span>MYTHIC · VS / DR / MQD</span><span>Raid week: Jul 13 – Jul 20, 2026</span></div>
+  <div class="wrap">
+    <div class="hero">
+      <div class="headline"><span class="tag">THIS WEEK</span><span class="txt">7 BOSSES DOWN IN 62 PULLS — GO AGANE</span></div>
+      <div class="tiles">
+        <div class="tile"><div class="lbl">KILLS</div>
+          <div class="val">7</div></div>
+        <div class="tile"><div class="lbl">PULLS</div>
+          <div class="val">62</div></div>
+        <div class="tile"><div class="lbl">DEATHS</div>
+          <div class="val">236</div></div>
+        <div class="tile"><div class="lbl">REALM RANK</div>
+          <div class="val">#49</div></div>
+        <div class="tile"><div class="lbl">REGION RANK</div>
+          <div class="val">#2,219</div></div>
+        <div class="tile"><div class="lbl">WORLD RANK</div>
+          <div class="val">#6,854</div></div>
+      </div>
+      <div class="bar"><div class="fill" style="width:11.3%;"></div>
+        <div class="cap">7 kills in 62 pulls (11%)</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <div class="col-h"><div class="tick"></div><div class="t">RAID</div></div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP DPS PARSES · MYTHIC</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Maillo</span>
+            <span class="detail">BeastMastery · Mythic Chimaerus · 12w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">92% <small>· 144K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowwordpain.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">Shadow · Mythic Chimaerus · 12w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">88% <small>· 146K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_demonhunter.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Enyò</span>
+            <span class="detail">Devourer · Mythic Vorasius · 3w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">85% <small>· 125K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_specdps.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Tommybravox</span>
+            <span class="detail">Havoc · Mythic Chimaerus · 6w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">79% <small>· 138K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">Unholy · Mythic Imperator Averzian · 12w streak</span>
+            <span class="value" style="color:rgb(56,144,255);">67% <small>· 127K</small></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP HEALING PARSES · MYTHIC</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(245,140,186);">Phyrthepali</span>
+            <span class="detail">Holy · Mythic Imperator Averzian · 3w streak</span>
+            <span class="value" style="color:rgb(255,128,0);">96% <small>· 167K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Healmates</span>
+            <span class="detail">Holy · Mythic Imperator Averzian · 12w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">75% <small>· 130K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">Discipline · Mythic Fallen-King Salhadaar · 12w streak</span>
+            <span class="value" style="color:rgb(56,144,255);">61% <small>· 173K</small></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP PARSES · ALL ROLES</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(245,140,186);">Phyrthepali</span>
+            <span class="detail">HPS · Holy · Mythic Imperator Averzian · 3w streak</span>
+            <span class="value" style="color:rgb(255,128,0);">96% <small>· 167K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Maillo</span>
+            <span class="detail">DPS · BeastMastery · Mythic Chimaerus · 12w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">92% <small>· 144K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowwordpain.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">DPS · Shadow · Mythic Chimaerus · 12w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">88% <small>· 146K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_demonhunter.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Enyò</span>
+            <span class="detail">DPS · Devourer · Mythic Vorasius · 3w streak</span>
+            <span class="value" style="color:rgb(163,53,238);">85% <small>· 125K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_spectank.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Meowstal</span>
+            <span class="detail">Tank · Vengeance · Mythic Imperator Averzian</span>
+            <span class="value" style="color:rgb(163,53,238);">80% <small>· 65K</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-h"><div class="tick"></div><div class="t">MYTHIC PLUS</div></div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP TIMED KEYS THIS WEEK</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Amrevenge</span>
+            <span class="detail">Beast Mastery Hunter · Pit of Saron · 12w streak</span>
+            <span class="value" style="color:rgb(230,180,70);">+20</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">Unholy DK · Skyreach · 12w streak</span>
+            <span class="value" style="color:rgb(230,180,70);">+19</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Brewzleeh</span>
+            <span class="detail">Brewmaster Monk · Magisters&#39; Terrace · 12w streak</span>
+            <span class="value" style="color:rgb(230,180,70);">+18</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">Discipline Priest · Skyreach · 12w streak</span>
+            <span class="value" style="color:rgb(230,180,70);">+18</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_demonhunter.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Enyò</span>
+            <span class="detail">Devourer DH · Maisara Caverns · 3w streak</span>
+            <span class="value" style="color:rgb(230,180,70);">+17</span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP M+ DPS THIS WEEK</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_windwalker_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Brewzleeh</span>
+            <span class="detail">Windwalker · +18 Pit of Saron</span>
+            <span class="value" style="color:rgb(255,128,0);">96% <small>· 146K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">Unholy · +19 Skyreach</span>
+            <span class="value" style="color:rgb(163,53,238);">89% <small>· 143K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Boondocka</span>
+            <span class="detail">BeastMastery · +16 Algeth&#39;ar Academy</span>
+            <span class="value" style="color:rgb(163,53,238);">89% <small>· 111K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowwordpain.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">Shadow · +16 Algeth&#39;ar Academy</span>
+            <span class="value" style="color:rgb(163,53,238);">89% <small>· 131K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_specdps.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Slicerdicer</span>
+            <span class="detail">Havoc · +15 Skyreach</span>
+            <span class="value" style="color:rgb(163,53,238);">89% <small>· 87K</small></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP M+ HPS THIS WEEK</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">Discipline · +19 Magister&#39;s Terrace</span>
+            <span class="value" style="color:rgb(255,128,0);">96% <small>· 100K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Healmates</span>
+            <span class="detail">Holy · +16 Algeth&#39;ar Academy</span>
+            <span class="value" style="color:rgb(255,128,0);">95% <small>· 46K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_magicimmunity.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,112,222);">Nokori</span>
+            <span class="detail">Restoration · +12 Maisara Caverns</span>
+            <span class="value" style="color:rgb(76,220,86);">39% <small>· 45K</small></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">TOP M+ TANKS THIS WEEK</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Brewzleeh</span>
+            <span class="detail">Brewmaster · +19 Magister&#39;s Terrace</span>
+            <span class="value" style="color:rgb(255,128,0);">97% <small>· 115K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,125,10);">Ellebasi</span>
+            <span class="detail">Guardian · +15 Skyreach</span>
+            <span class="value" style="color:rgb(56,144,255);">64% <small>· 62K</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-h"><div class="tick"></div><div class="t">SEASONAL MYTHIC PLUS</div></div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">SEASON M+ SCORES</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Amrevenge</span>
+            <span class="detail">Beast Mastery Hunter</span>
+            <span class="value" style="color:rgb(230,180,70);">3908</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_mistweaver_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Shadoxii</span>
+            <span class="detail">Mistweaver Monk</span>
+            <span class="value" style="color:rgb(230,180,70);">3692</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Brewzleeh</span>
+            <span class="detail">Brewmaster Monk</span>
+            <span class="value" style="color:rgb(230,180,70);">3686</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">Unholy DK</span>
+            <span class="value" style="color:rgb(230,180,70);">3668</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordshield.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Rakdisc</span>
+            <span class="detail">Discipline Priest</span>
+            <span class="value" style="color:rgb(230,180,70);">3529</span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">BEST SEASON RUNS</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Amrevenge</span>
+            <span class="detail">Beast Mastery Hunter · Pit of Saron</span>
+            <span class="value" style="color:rgb(235,236,240);">492</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_mistweaver_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Shadoxii</span>
+            <span class="detail">Mistweaver Monk · Pit of Saron</span>
+            <span class="value" style="color:rgb(235,236,240);">473</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_monk_brewmaster_spec.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Brewzleeh</span>
+            <span class="detail">Brewmaster Monk · Magisters&#39; Terrace</span>
+            <span class="value" style="color:rgb(235,236,240);">473</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">Unholy DK · Skyreach</span>
+            <span class="value" style="color:rgb(235,236,240);">472</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Rhansìk</span>
+            <span class="detail">Beast Mastery Hunter · Pit of Saron</span>
+            <span class="value" style="color:rgb(235,236,240);">446</span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">CLOSEST RACES</span><span class="rule"></span></div>
+          <div class="row textrow">Brewzleeh trails Shadoxii by just 6 — one good key flips it</div>
+          <div class="row textrow">Enyò trails Floofwall by just 11 — one good key flips it</div>
+          <div class="row textrow">Tommybravoo trails Brewzleeh by just 18 — one good key flips it</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-h"><div class="tick"></div><div class="t">SEASONAL GUILD</div></div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">WEEKLY BOSS RANKS</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_evoker_augmentation.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(51,147,127);">Healyeah</span>
+            <span class="detail">Augmentation · Region #1,462 · 23.7 avg</span>
+            <span class="value" style="color:rgb(230,180,70);">Realm #1</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Boondocka</span>
+            <span class="detail">BeastMastery · Region #1,708 · 34.3 avg</span>
+            <span class="value" style="color:rgb(230,180,70);">Realm #1</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Healmates</span>
+            <span class="detail">Holy · Region #725 · 58.3 avg</span>
+            <span class="value" style="color:rgb(230,180,70);">Realm #3</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_fire_firebolt02.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(64,199,235);">Glinkz</span>
+            <span class="detail">Fire · Region #287 · 40.9 avg</span>
+            <span class="value" style="color:rgb(235,236,240);">Realm #5</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_demonhunter_specdps.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(163,48,201);">Tommybravox</span>
+            <span class="detail">Havoc · Region #393 · 72.8 avg</span>
+            <span class="value" style="color:rgb(235,236,240);">Realm #12</span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">MOST IMPROVED DPS</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">19% → 67% · Unholy · Mythic</span>
+            <span class="value" style="color:rgb(76,220,86);">+48% <small>· 90K → 127K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_frostbolt02.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(64,199,235);">Buchalter</span>
+            <span class="detail">8% → 55% · Frost · Mythic</span>
+            <span class="value" style="color:rgb(76,220,86);">+47% <small>· 89K → 109K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_evoker_augmentation.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(51,147,127);">Healyeah</span>
+            <span class="detail">7% → 37% · Augmentation · Mythic</span>
+            <span class="value" style="color:rgb(76,220,86);">+30% <small>· 72K → 108K</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(255,172,51);">4</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_evoker_augmentation.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(51,147,127);">Dragoonx</span>
+            <span class="detail">10% → 38% · Augmentation · Heroic</span>
+            <span class="value" style="color:rgb(76,220,86);">+28% <small>· 43K → 67K</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(85,172,238);">5</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Boondocka</span>
+            <span class="detail">24% → 36% · BeastMastery · Mythic</span>
+            <span class="value" style="color:rgb(76,220,86);">+12% <small>· 103K → 107K</small></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">MOST IMPROVED HEALERS</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_guardianspirit.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(255,255,255);">Healmates</span>
+            <span class="detail">19% → 75% · Holy · Mythic</span>
+            <span class="value" style="color:rgb(76,220,86);">+56% <small>· 97K → 130K</small></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">GUILD RECORDS · SEASON</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_hunter_bestialdiscipline.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Amrevenge</span>
+            <span class="detail">Highest timed key · Pit of Saron</span>
+            <span class="value" style="color:rgb(230,180,70);">+20</span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_unholypresence.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(196,30,58);">Tommybravoo</span>
+            <span class="detail">Best DPS parse · Mythic Chimaerus</span>
+            <span class="value" style="color:rgb(229,204,128);">100%</span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(245,140,186);">Phyrthepali</span>
+            <span class="detail">Best HPS parse · Mythic Imperator Averzian</span>
+            <span class="value" style="color:rgb(255,128,0);">96%</span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-h"><span class="t">WEEKLY AWARD · IRON ATTENDANCE</span><span class="rule"></span></div>
+          <div class="row">
+            <span class="badge" style="background:rgb(241,196,83);">1</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Amrevenge</span>
+            <span class="detail">weeks active in a row</span>
+            <span class="value" style="color:rgb(76,220,86);">12 <small>· wks</small></span>
+          </div>
+          <div class="row alt">
+            <span class="badge" style="background:rgb(176,182,192);">2</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(171,212,115);">Boondocka</span>
+            <span class="detail">weeks active in a row</span>
+            <span class="value" style="color:rgb(76,220,86);">12 <small>· wks</small></span>
+          </div>
+          <div class="row">
+            <span class="badge" style="background:rgb(205,127,68);">3</span><img class="icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_monk.jpg" alt="" loading="lazy">
+            <span class="name" style="color:rgb(0,255,150);">Brewzleeh</span>
+            <span class="detail">weeks active in a row</span>
+            <span class="value" style="color:rgb(76,220,86);">12 <small>· wks</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="roast">
+      <div class="t">ROAST OF THE WEEK</div>
+      <div class="q">“Healmates got out parsed by a 274 ilvl Resto Shaman ... Git Gud”</div><div class="attr">— Bzach1000</div>
+    </div>
+  </div>
+  <div class="motd"><span class="chip">MOTD</span><span class="q">That&#39;s a 50 DKP MINUS.</span></div>
+  <div class="credits">
+    <span>“Git Gud.” — ancient guild proverb</span>
+    <span>Powered by Guild Board · github.com/Bzach10/wow-guild-board</span>
+  </div>
+</body>
+</html>
