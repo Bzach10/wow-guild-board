@@ -1,0 +1,84 @@
+{
+  "top_dps": [
+    {
+      "name": "Amrevenge",
+      "value": 63,
+      "detail": "Chimaerus, the Undreamt God · BeastMastery"
+    },
+    {
+      "name": "Enyò",
+      "value": 47,
+      "detail": "Chimaerus, the Undreamt God · Devourer"
+    },
+    {
+      "name": "Tommybravoo",
+      "value": 44,
+      "detail": "Chimaerus, the Undreamt God · Unholy"
+    },
+    {
+      "name": "Buchalter",
+      "value": 40,
+      "detail": "Chimaerus, the Undreamt God · Frost"
+    },
+    {
+      "name": "Holyx",
+      "value": 29,
+      "detail": "Chimaerus, the Undreamt God · Retribution"
+    },
+    {
+      "name": "Maillo",
+      "value": 19,
+      "detail": "Chimaerus, the Undreamt God · BeastMastery"
+    },
+    {
+      "name": "Grandsongor",
+      "value": 17,
+      "detail": "Chimaerus, the Undreamt God · BeastMastery"
+    },
+    {
+      "name": "Heximal",
+      "value": 16,
+      "detail": "Chimaerus, the Undreamt God · Feral"
+    },
+    {
+      "name": "Breaktheicee",
+      "value": 15,
+      "detail": "Chimaerus, the Undreamt God · Frost"
+    },
+    {
+      "name": "Kirrá",
+      "value": 15,
+      "detail": "Chimaerus, the Undreamt God · Demonology"
+    }
+  ],
+  "top_hps": [
+    {
+      "name": "Rakdisc",
+      "value": 84,
+      "detail": "Chimaerus, the Undreamt God · Discipline"
+    },
+    {
+      "name": "Phyrthepali",
+      "value": 83,
+      "detail": "Chimaerus, the Undreamt God · Holy"
+    },
+    {
+      "name": "Hellful",
+      "value": 4,
+      "detail": "Chimaerus, the Undreamt God · Restoration"
+    }
+  ],
+  "top_tanks": [
+    {
+      "name": "Meowstal",
+      "value": 36,
+      "detail": "Chimaerus, the Undreamt God · Vengeance"
+    },
+    {
+      "name": "Ellebasi",
+      "value": 19,
+      "detail": "Chimaerus, the Undreamt God · Guardian"
+    }
+  ],
+  "difficulty": 5
+}
